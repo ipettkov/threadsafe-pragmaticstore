@@ -6,6 +6,10 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import java.nio.file.Paths;
 import java.util.concurrent.TimeUnit;
 
+/**
+ * The main operational class of the page object model pattern used in this framework which instantiates all pages through the startBrowser method allowing
+ * to work with their fields and methods for the tests
+ */
 public class App {
     private WebDriver driver;
     public final static  String ADMIN_PAGE = "http://shop.pragmatic.bg/admin";
@@ -18,7 +22,10 @@ public class App {
     public GiftsCertificatePage giftsCertificatePage;
     public ReturnsPage returnsPage;
 
-
+    /**
+     * The Method starts a browser by settings it's properties and instantiates a WebDriver and all the pages that you can use for tests
+     * @param pageToOpen - accepts String with the page you want to be in
+     */
     public void startBrowser(String pageToOpen) {
         String driverPath = Paths.get("chromedriver.exe").toAbsolutePath().toString();
         System.setProperty("webdriver.chrome.driver", driverPath);
