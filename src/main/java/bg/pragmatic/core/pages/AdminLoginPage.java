@@ -11,6 +11,9 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
+/**
+ * The class represents the Admin Login Page
+ */
 public class AdminLoginPage extends ParentPage {
     private static final By USERNAME_FIELD = By.id("input-username");
     private static final By PASSWORD_FIELD = By.id("input-password");
@@ -28,12 +31,24 @@ public class AdminLoginPage extends ParentPage {
         super(driver);
     }
 
+    /**
+     * This method Logs in into admin dashboard page accepting from the enum classes Password and Username as paramters
+     * @param username accepts paramter from Enum class Username
+     * @param password accepts paramter from Enum class Password
+     * @see Username
+     * @see Password
+     */
     public void login(Username username, Password password) {
         type(USERNAME_FIELD, username.getUsername());
         type(PASSWORD_FIELD, password.getPassword());
         click(LOGIN_BUTTON);
     }
 
+    /**
+     * Method designed for negative Login data driven tests accepting Strings in order for the data provider to fill them with multiple variants
+     * @param username accepts String
+     * @param password accepts String
+     */
     public void loginDDT(String username, String password) {
         type(USERNAME_FIELD, username);
         type(PASSWORD_FIELD, password);
@@ -44,20 +59,34 @@ public class AdminLoginPage extends ParentPage {
         return getElementText(LOGIN_VALIDATION_ERROR);
     }
 
+    /**
+     * Method that provides the specified input data to the @DataProvider for the Data driven negative log in test
+     * @return returns String[][] with the data specified in LOGIN_DATA_DRIVEN_DATA constant in AdminLoginPage class
+     */
     public Object[][] getTestData() {
         return LOGIN_DATA_DRIVEN_DATA;
     }
 
+    /**
+     * Method clears login fields
+     */
     public void clearLoginFields() {
         clear(USERNAME_FIELD);
         clear(PASSWORD_FIELD);
     }
 
+    /**
+     * Method verifies whether the actual login error message matches the expected one
+     * @param expectedMessage
+     */
     public void verifyErrorValidationMessage(String expectedMessage) {
         String errorMsg = getElementText(LOGIN_VALIDATION_ERROR);
         Assert.assertTrue(errorMsg.contains(expectedMessage));
     }
 
+    /**
+     * Method clears the Invalid Tolken session error if it appears to prevent the negative login Data driven test interruption
+     */
     public void clearInvalidTolken() {
         if (isElementPresent(INVALID_TOLKEN_LOC)) {
             getElement(INVALID_TOLKEN_LOC).click();

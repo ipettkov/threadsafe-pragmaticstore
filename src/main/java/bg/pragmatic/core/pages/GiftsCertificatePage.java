@@ -20,41 +20,47 @@ public class GiftsCertificatePage extends ParentPage {
     private final static By YOUR_EMAIL = By.id("input-from-email");
     private final static By CHECKBOX = By.cssSelector("input[type='checkbox']");
     private final static By CONTINUE_BUTTON = By.cssSelector("input[value='Continue'][type='submit']");
+    private final static By ERRORS = By.className("text-danger");
 
     public GiftsCertificatePage(WebDriver driver) {
         super(driver);
     }
 
+    /**
+     * Method which checks if the radio buttons in Gifts and Certificates page work
+     */
     public void verifyRadioButtons() {
-        WebElement birthdayRadioButt = getElement(BIRTHDAY_RADIO_BUTT);
-        WebElement christmasRadioButt = getElement(CHRISTMAS_RADIO_BUTT);
-        WebElement generalRadioButt = getElement(GENERAL_RADIO_BUTT);
 
-        if (!birthdayRadioButt.isSelected()) {
-            birthdayRadioButt.click();
+        if (!getElement(BIRTHDAY_RADIO_BUTT).isSelected()) {
+            click(BIRTHDAY_RADIO_BUTT);
         }
 
-        assertFalse(christmasRadioButt.isSelected());
-        assertFalse(generalRadioButt.isSelected());
-        assertTrue(birthdayRadioButt.isSelected());
+        assertFalse(getElement(CHRISTMAS_RADIO_BUTT).isSelected());
+        assertFalse(getElement(GENERAL_RADIO_BUTT).isSelected());
+        assertTrue(getElement(BIRTHDAY_RADIO_BUTT).isSelected());
     }
+
+    /**
+     * Method that inputs passed as the param textToSendInField text into the passed as the param textToSendInField and after pressing continue verifies that the expected
+     * error messages appear under left empty fields
+     * @param fieldToWriteText - accepts String
+     * @param textToSendInField - accepts String
+     */
 
     public void verifyEmptyFieldsError(String fieldToWriteText, String textToSendInField) {
         WebElement filledField = fieldSelector(fieldToWriteText);
-        WebElement checkbox = getElement(CHECKBOX);
-        WebElement generalRadioButt = getElement(GENERAL_RADIO_BUTT);
 
-        if (!checkbox.isSelected()) {
-            checkbox.click();
+        if (!getElement(CHECKBOX).isSelected()) {
+            click(CHECKBOX);
         }
 
-        if (!generalRadioButt.isSelected()) {
-            generalRadioButt.click();
+        if (!getElement(GENERAL_RADIO_BUTT).isSelected()) {
+            click(GENERAL_RADIO_BUTT);
         }
 
         filledField.sendKeys(textToSendInField);
-        getElement(CONTINUE_BUTTON).click();
-        List<WebElement> errors = getElements(By.className("text-danger"));
+        click(CONTINUE_BUTTON);
+        List<WebElement> errors = getElements(ERRORS);
 
         for (WebElement error : errors) {
             if (error != filledField) {
@@ -62,7 +68,9 @@ public class GiftsCertificatePage extends ParentPage {
             }
         }
     }
-
+    /**
+     * A helper Method for the verifyEmptyFieldsError method which helps the main method to select a field in which to input data.
+     */
     private WebElement fieldSelector(String chooseField) {
         WebElement fieldEntry;
 
