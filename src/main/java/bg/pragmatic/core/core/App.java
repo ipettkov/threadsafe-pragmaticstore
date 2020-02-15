@@ -23,7 +23,6 @@ public class App {
         String driverPath = Paths.get("chromedriver.exe").toAbsolutePath().toString();
         System.setProperty("webdriver.chrome.driver", driverPath);
         driver = new ChromeDriver();
-        //driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         driver.manage().window().maximize();
 
         adminLoginPage = new AdminLoginPage(driver);
