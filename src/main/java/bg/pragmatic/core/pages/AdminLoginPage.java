@@ -55,10 +55,6 @@ public class AdminLoginPage extends ParentPage {
         click(LOGIN_BUTTON);
     }
 
-    public String getValidationError() {
-        return getElementText(LOGIN_VALIDATION_ERROR);
-    }
-
     /**
      * Method that provides the specified input data to the @DataProvider for the Data driven negative log in test
      * @return returns String[][] with the data specified in LOGIN_DATA_DRIVEN_DATA constant in AdminLoginPage class
