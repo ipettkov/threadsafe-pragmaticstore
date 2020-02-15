@@ -1,0 +1,13 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+
+<suite name="Suite 1" verbose="1" >
+    <test name="Regression1" >
+        <classes>
+            <class name="bg.pragmatic.tests.admin.negative.AdminLoginTest"/>
+            <class name="bg.pragmatic.tests.admin.positive.AdminLoginTest"/>
+            <class name="bg.pragmatic.tests.admin.positive.OrderStatusMenuTest"/>
+            <class name="bg.pragmatic.tests.user.positive.GiftsCertificateTest"/>
+            <class name="bg.pragmatic.tests.user.negative.GiftsCertificateTest"/>
+        </classes>
+    </test>
+</suite>
