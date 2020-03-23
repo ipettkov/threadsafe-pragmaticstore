@@ -4,16 +4,13 @@ import bg.pragmatic.core.pages.base.ParentPage;
 import enums.Password;
 import enums.Username;
 import org.openqa.selenium.By;
-import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
-import org.testng.Assert;
+import static org.testng.Assert.*;
 
 /**
  * The class represents the Admin Login Page
  */
+
 public class AdminLoginPage extends ParentPage {
     private static final By USERNAME_FIELD = By.id("input-username");
     private static final By PASSWORD_FIELD = By.id("input-password");
@@ -38,6 +35,7 @@ public class AdminLoginPage extends ParentPage {
      * @see Username
      * @see Password
      */
+
     public void login(Username username, Password password) {
         type(USERNAME_FIELD, username.getUsername());
         type(PASSWORD_FIELD, password.getPassword());
@@ -49,6 +47,7 @@ public class AdminLoginPage extends ParentPage {
      * @param username accepts String
      * @param password accepts String
      */
+
     public void loginDDT(String username, String password) {
         type(USERNAME_FIELD, username);
         type(PASSWORD_FIELD, password);
@@ -59,6 +58,7 @@ public class AdminLoginPage extends ParentPage {
      * Method that provides the specified input data to the @DataProvider for the Data driven negative log in test
      * @return returns String[][] with the data specified in LOGIN_DATA_DRIVEN_DATA constant in AdminLoginPage class
      */
+
     public Object[][] getTestData() {
         return LOGIN_DATA_DRIVEN_DATA;
     }
@@ -66,6 +66,7 @@ public class AdminLoginPage extends ParentPage {
     /**
      * Method clears login fields
      */
+
     public void clearLoginFields() {
         clear(USERNAME_FIELD);
         clear(PASSWORD_FIELD);
@@ -75,14 +76,16 @@ public class AdminLoginPage extends ParentPage {
      * Method verifies whether the actual login error message matches the expected one
      * @param expectedMessage
      */
+
     public void verifyErrorValidationMessage(String expectedMessage) {
         String errorMsg = getElementText(LOGIN_VALIDATION_ERROR);
-        Assert.assertTrue(errorMsg.contains(expectedMessage));
+        assertTrue(errorMsg.contains(expectedMessage));
     }
 
     /**
      * Method clears the Invalid Tolken session error if it appears to prevent the negative login Data driven test interruption
      */
+
     public void clearInvalidTolken() {
         if (isElementPresent(INVALID_TOLKEN_LOC)) {
             getElement(INVALID_TOLKEN_LOC).click();

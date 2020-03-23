@@ -1,8 +1,8 @@
 package enums;
 
 public enum Password {
-    ADMIN_PASSWORD("parola123!"),
-    INVALID_PASSWORD("invalid pass");
+    ADMIN_PASSWORD("parola123!");
+
     private String password;
 
     Password(String password) {

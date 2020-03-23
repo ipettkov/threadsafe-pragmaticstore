@@ -3,7 +3,6 @@ package bg.pragmatic.core.pages;
 import bg.pragmatic.core.pages.base.ParentPage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class NavigationPage extends ParentPage {
     private static final By SALES_MENU = By.id("menu-sale");

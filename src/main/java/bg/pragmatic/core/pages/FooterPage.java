@@ -16,6 +16,7 @@ public class FooterPage extends ParentPage {
      *  Method which locates and clicks a certain menu, passed as a parameter, from the Footer page.
      * @param menu - accepts String with the following valid options: contacts (for the Contact Us page), gifts (for the Gift Certificates page)
      */
+
     public void clickOption(String menu) {
         switch(menu) {
             case "contacts":
