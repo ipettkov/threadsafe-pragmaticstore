@@ -3,6 +3,7 @@ package bg.pragmatic.core.pages;
 import bg.pragmatic.core.pages.base.ParentPage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import static org.testng.Assert.*;
 
 /**
  * The class represents the Admin Dashboard page
@@ -29,5 +30,10 @@ public class AdminDashBoardPage extends ParentPage {
 
     public void logout() {
         click(LOGOUT_BUTTON);
+    }
+
+    public void validateSuccessfulLogin() {
+        assertTrue(isLogoutButtonDisplayed(), "The logout button is not displayed");
+        logout();
     }
 }

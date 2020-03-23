@@ -26,8 +26,6 @@ public class AdminLoginTest {
     @Test
     public void successfulLoginTest() {
         app.adminLoginPage.login(Username.VALID_USERNAME, Password.ADMIN_PASSWORD);
-        assertTrue(app.adminDashBoardPage.isLogoutButtonDisplayed(), "The logout button is not displayed");
-        app.adminDashBoardPage.logout();
+        app.adminDashBoardPage.validateSuccessfulLogin();
     }
-
 }
