@@ -71,6 +71,7 @@ public class GiftsCertificatePage extends ParentPage {
     /**
      * A helper Method for the verifyEmptyFieldsError method which helps the main method to select a field in which to input data.
      */
+
     private WebElement fieldSelector(String chooseField) {
         WebElement fieldEntry;
 

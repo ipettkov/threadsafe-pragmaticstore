@@ -1,8 +1,7 @@
 package enums;
 
 public enum Username {
-    VALID_USERNAME("admin"),
-    INVALID_USERNAME("hsadasda");
+    VALID_USERNAME("admin");
 
     private String username;
 
@@ -13,5 +12,4 @@ public enum Username {
     public String getUsername() {
         return username;
     }
-
 }

@@ -18,6 +18,7 @@ public class AdminDashBoardPage extends ParentPage {
      * This method checks whether the LogOut button is displayed
      * @return returns boolean
      */
+
     public boolean isLogoutButtonDisplayed() {
         return isDisplayed(LOGOUT_BUTTON);
     }
@@ -25,6 +26,7 @@ public class AdminDashBoardPage extends ParentPage {
     /**
      * This method logs out of Admin Dashboard page
      */
+
     public void logout() {
         click(LOGOUT_BUTTON);
     }
